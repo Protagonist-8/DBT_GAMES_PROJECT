@@ -1,0 +1,51 @@
+version: 2
+
+sources:
+  - name: video_games_source
+    database: VIDEO_GAMES
+    schema: RAW
+    config:
+      enabled: true
+
+    tables:
+      - name: DIM_CONSOLES
+        description: "This table contains the consoles metadata, such as the console name, manufacturer, and release date."
+        columns:
+          - name: console_id
+            description: "The unique identifier for each console."
+          - name: parent_brand
+            description: "The parent brand of the console, such as Sony, Microsoft, or Nintendo."
+          - name: platform_name
+            description: "The name of the console platform, such as PlayStation, Xbox, or Switch."
+          - name: release_year
+            description: "The year the console was released."
+
+      - name: DIM_VIDEO_GAMES
+        description: "This table contains the video games metadata, such as the game title, genre, and release date."
+        columns:
+          - name: game_id
+            description: "The unique identifier for each video game."
+          - name: title
+            description: "The title of the video game."
+          - name: genre
+            description: "The genre of the video game, such as Action, Adventure, or RPG."
+          - name: release_year
+            description: "The year the video game was released."
+          - name: makers
+            description: "The makers of the video game, such as the development studio or publisher."
+          - name: cost
+            description: "The cost of the video game at the time of release."
+
+      - name: VIDEO_GAME_SALES
+        description: "This table contains the video game sales data, such as the number of units sold and the revenue generated."
+        columns:
+          - name: order_id
+            description: "The unique identifier for each sale record."
+          - name: game_id
+            description: "The unique identifier for the video game being sold."
+          - name: console_id
+            description: "The unique identifier for the console on which the game was sold."
+          - name: units_sold
+            description: "The number of units sold for the video game."
+          - name: revenue
+            description: "The total revenue generated from the sales of the video game."
